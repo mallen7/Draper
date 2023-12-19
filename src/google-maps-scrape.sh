@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source the environment variables
-source "./env.sh"
+source "env.sh"
 
 export proj_name=$1
 export fuid=$2
