@@ -47,7 +47,7 @@ function email_crawl() {
     export project_name=$1
     export pid=$(cat ./work/${project_name}/pid.txt)
 
-    python3 ./proj/emailscraper/main.py ./work/${project_name}/clean_${project_name}_${pid}.txt # FIX BY CHANGING PYTHON TO ACCEPT FILENAME AS ARGUMENT
+    python3 proj/emailscraper/main.py work/${project_name}/clean_${project_name}_${pid}.txt
 }
 
 # Mail function
@@ -62,7 +62,7 @@ function mail_output() {
     export email=$2
     export proj_name=$3
 
-    bash "./src/email_func.sh" "${subject}" "${email}" "${proj_name}"
+    bash "src/email_func.sh" "${subject}" "${email}" "${proj_name}"
 }
 
 # Function to see if chromedriver exists in /usr/bin, if not, download it
