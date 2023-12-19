@@ -37,7 +37,7 @@ read -rp "Enter email address to send output to: " email
 # Google Maps scraper
 echo "Running Google Maps Scraper..."
 cd proj/google-maps-scraper || return
-python3 ./main.py "${query}"
+python3 main.py "${query}"
 
 # Get latest Google Maps query output
 echo "Pulling scraper output..."
