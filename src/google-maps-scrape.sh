@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source the environment variables
-source ./env.sh
+source ../src/env.sh
 
 # Grabbing PID variable
 export pid=$(cat ./work/${proj_name}/pid.txt)
