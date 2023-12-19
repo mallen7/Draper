@@ -62,7 +62,7 @@ function mail_output() {
     export email=$2
     export proj_name=$3
 
-    sh "./src/email_func.sh" "${subject}" "${email}" "${proj_name}"
+    bash "./src/email_func.sh" "${subject}" "${email}" "${proj_name}"
 }
 
 # Function to see if chromedriver exists in /usr/bin, if not, download it

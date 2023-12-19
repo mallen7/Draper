@@ -1,10 +1,16 @@
 #!/bin/bash
 
 # Source the environment variables
-source "../../src/env.sh"
+source "./env.sh"
 
 export proj_name=$1
 export fuid=$2
+
+# Validate proj_name
+if [ -z "$proj_name" ]; then
+    echo "Project name not provided."
+    exit 1
+fi
 
 export gmaps_output="../${proj_name}/full_scrape_${pid}.csv"
 export dirty_email="../${proj_name}/dirty_${pid}.csv"
@@ -16,6 +22,13 @@ export subject="Draper; Google Maps/Email Domain Scraper Results ${proj_name}"
 
 # Grabbing PID variable
 export pid=$(cat work/${proj_name}/pid.txt)
+
+# Grabbing PID variable
+export pid=$(cat "./work/${proj_name}/pid.txt")
+if [ -z "$pid" ]; then
+    echo "PID not found in ./work/${proj_name}/pid.txt"
+    exit 1
+fi
 
 # User prompts
 read -rp "Enter Google Maps Scraper query: " query
