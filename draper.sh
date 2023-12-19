@@ -31,7 +31,6 @@ do
         "Option 1: Google Maps Scrape")
             echo "You chose Google Maps Scrape"
             cp -p "./src/google-maps-scrape.sh" ./work/${project_name}/google-maps-scrape.sh
-            cp -p "./src/env.sh" ./work/${project_name}/env.sh
             ./work/${project_name}/google-maps-scrape.sh "${project_name}" "${fuid}"
             ;;
         "Option 2: Facebook Scrape")
