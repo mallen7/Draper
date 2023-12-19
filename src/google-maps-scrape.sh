@@ -13,6 +13,7 @@ export gmaps_output="../work/${proj_name}/full_scrape_${pid}.csv"
 export dirty_email="../work/${proj_name}/dirty_${pid}.csv"
 export clean_email_csv="../work/${proj_name}/clean_${pid}.csv"
 export clean_email_txt="../work/${proj_name}/clean_${pid}.txt"
+export scraped_emails="../work/${proj_name}/scraped_emails_${pid}.csv"
 
 export subject="Draper; Google Maps/Email Domain Scraper Results ${proj_name}"
 
@@ -22,7 +23,7 @@ read -rp "Enter email address to send output to: " email
 
 # Google Maps scraper
 echo "Running Google Maps Scraper..."
-cd ../proj/google-maps-scraper
+cd ../proj/google-maps-scraper || return
 python3 ./main.py "${query}"
 cd ../..
 
@@ -35,16 +36,20 @@ fi
 
 # Cut out the domain column and create new file
 echo "Performing ETL operations..."
-cut -d',' -f6 ${gmaps_output} >> ${dirty_email}
+cd work/"${proj_name}" || return
+cut -d',' -f6 "${gmaps_output}" >> "${dirty_email}"
 
 # Clean the extracted domains
 echo "Cleaning extracted domains..."
-./src/domain-cleaner.sh ${dirty_email} ${proj_name}
-cp ${clean_email} >> ${clean_email_txt}
+./src/domain-cleaner.sh "${dirty_email}" "${proj_name}"
+cd work/"${proj_name}"/ || return
+cp "${clean_email}" "${clean_email_txt}"
+cp "${clean_email_txt}" "../proc/email_scrape_tmp.txt"
 
 # Crawl domains for more emails
 echo "Crawling domains for more emails..."
-email_crawl ${clean_email_txt}
+email_crawl "${clean_email_txt}"
+cp "../proc/email_results_tmp.txt" "${scraped_emails}"
 
 # Zipping files
 echo "Zipping files..."

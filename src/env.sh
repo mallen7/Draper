@@ -1,5 +1,4 @@
-export current_date=$(date +"%Y-%m-%d")
-export current_time=$(date +"%H:%M:%S")
+#!/bin/bash
 
 # Current date variable
 export current_date=$(date +"%Y-%m-%d")
@@ -26,7 +25,7 @@ function cr_proj_dir() {
     mkdir -p "work/${project_name}"
 
     # Create PID file
-    echo "${proj_name}_${fuid}" > "work/${project_name}/pid.txt"
+    echo "${project_name}_${fuid}" > "work/${project_name}/pid.txt"
     echo PID created:
     cat "work/${project_name}/pid.txt"
 }
@@ -46,10 +45,9 @@ function email_crawl() {
     fi
 
     export project_name=$1
+    export pid=$(cat ./work/${project_name}/pid.txt)
 
-    echo "Running email crawler..."
-    
-    python3 ../proj/emailscraper/main.py ../work/${project_name}/clean_${project_name}_${fuid}.txt # FIX BY CHANGING PYTHON TO ACCEPT FILENAME AS ARGUMENT
+    python3 ./proj/emailscraper/main.py ./work/${project_name}/clean_${project_name}_${pid}.txt # FIX BY CHANGING PYTHON TO ACCEPT FILENAME AS ARGUMENT
 }
 
 # Mail function
@@ -64,6 +62,33 @@ function mail_output() {
     export email=$2
     export proj_name=$3
 
-    sh ./src/email_func.sh ${subject} ${email} ${proj_name}
+    sh "./src/email_func.sh" "${subject}" "${email}" "${proj_name}"
 }
 
+# Function to see if chromedriver exists in /usr/bin, if not, download it
+function check_chromedriver() {
+    if [[ "$(lsb_release -is 2>/dev/null)" == "Ubuntu" ]]; then
+        # Check if chromedriver exists in /usr/bin
+        if [[ -f "/usr/bin/chromedriver" ]]; then
+            echo "System is Ubuntu and chromedriver exists in /usr/bin."
+            # You can add more commands here
+        else
+            echo "Chromedriver does not exist in /usr/bin. Downloading..."
+            if sudo apt update && sudo apt install -y chromedriver; then
+                echo "Chromedriver installed successfully."
+                # Create a symbolic link in /usr/bin if it's not already there
+                local chromedriver_path=$(which chromedriver)
+                if [[ -n "$chromedriver_path" && ! -f "/usr/bin/chromedriver" ]]; then
+                    sudo ln -s "$chromedriver_path" /usr/bin/chromedriver
+                    echo "Chromedriver symlink created in /usr/bin."
+                fi
+            else
+                echo "Failed to install chromedriver."
+                return 1  # Exit the function with an error status
+            fi
+        fi
+    else
+        echo "This script is intended for Ubuntu systems only."
+        return 1  # Exit the function with an error status
+    fi
+}

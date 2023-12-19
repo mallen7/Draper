@@ -1,2 +1,3 @@
 purge?/
-.vscode
+.vscode/
+.trunk/
