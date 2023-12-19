@@ -1,10 +1,7 @@
 #!/bin/bash
 
 # Source the environment variables
-source ../../src/env.sh
-
-# Grabbing PID variable
-export pid=$(cat ./work/${proj_name}/pid.txt)
+source "../../src/env.sh"
 
 export proj_name=$1
 export fuid=$2
@@ -16,6 +13,9 @@ export clean_email_txt="../work/${proj_name}/clean_${pid}.txt"
 export scraped_emails="../work/${proj_name}/scraped_emails_${pid}.csv"
 
 export subject="Draper; Google Maps/Email Domain Scraper Results ${proj_name}"
+
+# Grabbing PID variable
+export pid=$(cat ./work/${proj_name}/pid.txt)
 
 # User prompts
 read -rp "Enter Google Maps Scraper query: " query
