@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source the environment variables
+source ./src/env.sh
+
 # Purge previous ./work directory with echo off
 set +x
 trunc_work
@@ -15,9 +18,6 @@ read -rp "Enter a project name: " project_name
 
 # Create the project directory
 cr_proj_dir "${project_name}"
-
-# Source the environment variables
-source ./src/env.sh
 
 echo "Select an option to scrape:"
 
