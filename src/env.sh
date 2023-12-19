@@ -70,7 +70,7 @@ function check_chromedriver() {
     if [[ "$(lsb_release -is 2>/dev/null)" == "Ubuntu" ]]; then
         # Check if chromedriver exists in /usr/bin
         if [[ -f "/usr/bin/chromedriver" ]]; then
-            echo "System is Ubuntu and chromedriver exists in /usr/bin."
+            echo "System checks passed."
             # You can add more commands here
         else
             echo "Chromedriver does not exist in /usr/bin. Downloading..."
