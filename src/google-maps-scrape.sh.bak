@@ -6,11 +6,11 @@ source "../../src/env.sh"
 export proj_name=$1
 export fuid=$2
 
-export gmaps_output="../${proj_name}/full_scrape_${pid}.csv"
-export dirty_email="../${proj_name}/dirty_${pid}.csv"
-export clean_email_csv="../${proj_name}/clean_${pid}.csv"
-export clean_email_txt="../${proj_name}/clean_${pid}.txt"
-export scraped_emails="../${proj_name}/scraped_emails_${pid}.csv"
+export gmaps_output="../work/${proj_name}/full_scrape_${pid}.csv"
+export dirty_email="../work/${proj_name}/dirty_${pid}.csv"
+export clean_email_csv="../work/${proj_name}/clean_${pid}.csv"
+export clean_email_txt="../work/${proj_name}/clean_${pid}.txt"
+export scraped_emails="../work/${proj_name}/scraped_emails_${pid}.csv"
 
 export subject="Draper; Google Maps/Email Domain Scraper Results ${proj_name}"
 
@@ -43,7 +43,7 @@ cut -d',' -f6 "${gmaps_output}" >> "${dirty_email}"
 echo "Cleaning extracted domains..."
 ./src/domain-cleaner.sh "${dirty_email}" "${proj_name}"
 cd work/"${proj_name}"/ || return
-cp "${clean_email_csv}" "${clean_email_txt}"
+cp "${clean_email}" "${clean_email_txt}"
 cp "${clean_email_txt}" "../proc/email_scrape_tmp.txt"
 
 # Crawl domains for more emails
