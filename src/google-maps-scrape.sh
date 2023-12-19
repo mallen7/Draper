@@ -15,7 +15,7 @@ export scraped_emails="../${proj_name}/scraped_emails_${pid}.csv"
 export subject="Draper; Google Maps/Email Domain Scraper Results ${proj_name}"
 
 # Grabbing PID variable
-export pid=$(cat ./work/${proj_name}/pid.txt)
+export pid=$(cat work/${proj_name}/pid.txt)
 
 # User prompts
 read -rp "Enter Google Maps Scraper query: " query
