@@ -7,3 +7,9 @@
 [submodule "proj/LinkedIn-Scraper"]
 	path = proj/LinkedIn-Scraper
 	url = https://github.com/mallen7/LinkedIn-Scraper.git
+[submodule "linkedin_scraper"]
+	path = linkedin_scraper
+	url = https://github.com/mallen7/linkedin_scraper.git
+[submodule "proj/linkedin_scraper"]
+	path = proj/linkedin_scraper
+	url = https://github.com/mallen7/linkedin_scraper.git
