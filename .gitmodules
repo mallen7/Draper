@@ -13,3 +13,6 @@
 [submodule "proj/linkedin_scraper"]
 	path = proj/linkedin_scraper
 	url = https://github.com/mallen7/linkedin_scraper.git
+[submodule "proj/scraped_in"]
+	path = proj/scraped_in
+	url = https://github.com/mallen7/scrapedin.git
