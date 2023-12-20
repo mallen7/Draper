@@ -27,7 +27,7 @@ function cr_proj_dir() {
     # Create PID file
     echo "${project_name}_${fuid}" > "work/${project_name}/pid.txt"
     echo PID created:
-    cat "work/${project_name}/pid.txt"
+#    cat "work/${project_name}/pid.txt"
 }
 
 # Function to delete everything in ./work
