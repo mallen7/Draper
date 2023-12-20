@@ -8,7 +8,6 @@ export proj_name=$1
 
 # Grabbing PID variable
 export pid=$(cat work/${proj_name}/pid.txt)
-cat $pid
 
 # Get user inputs
 read -rp "Enter target industry: " industry
