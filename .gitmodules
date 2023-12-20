@@ -4,3 +4,6 @@
 [submodule "proj/google-maps-scraper"]
 	path = proj/google-maps-scraper
 	url = https://github.com/mallen7/google-maps-scraper.git
+[submodule "proj/LinkedIn-Scraper"]
+	path = proj/LinkedIn-Scraper
+	url = https://github.com/mallen7/LinkedIn-Scraper.git
