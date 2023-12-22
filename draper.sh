@@ -42,7 +42,7 @@ do
             ;;
         "Option 3: LinkedIn Scrape")
             echo "You chose LinkedIn Scrape"
-            cp -p "./src/linkedin_scraper.sh" ./work/${project_name}/linkedin_scraper.sh
+            cp -p "./src/scrapedin.sh" ./work/${project_name}/scrapedin.sh
             ./work/${project_name}/scrapedin.sh "${project_name}"
             ;;
         "Option 4: Internet Email Domain Scrape")
