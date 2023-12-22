@@ -10,6 +10,10 @@ trunc_work
 # Check if chromedriver is installed, if not, install it
 check_chromedriver
 
+# Print the Don
+clear
+cat src/draper.txt
+
 echo "**********************************************"
 echo "Draper; most ultimate scraper in the universe."
 echo "**********************************************"
@@ -39,7 +43,7 @@ do
         "Option 3: LinkedIn Scrape")
             echo "You chose LinkedIn Scrape"
             cp -p "./src/linkedin_scraper.sh" ./work/${project_name}/linkedin_scraper.sh
-            ./work/${project_name}/linkedin_scraper.sh "${project_name}"
+            ./work/${project_name}/scrapedin.sh "${project_name}"
             ;;
         "Option 4: Internet Email Domain Scrape")
             echo "You chose Internet Email Domain Scrape"
