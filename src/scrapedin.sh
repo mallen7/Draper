@@ -16,4 +16,4 @@ read -rp "Enter target region: " region
 # Run the LinkedIn scraper
 echo "Running LinkedIn scraper..."
 cd "work/${proj_name}/"
-python3 proj/scraped_in/scrapedin.py -i "${industry}" -g "${region}" -o "work/linkedin_scrape_${pid}.csv"pwd
+python3 ../proj/scraped_in/scrapedin.py -i "${industry}" -g "${region}" -o "work/linkedin_scrape_${pid}.csv"pwd
