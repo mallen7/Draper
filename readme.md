@@ -1,4 +1,5 @@
 # Draper; 2nd only to the Don
+*It's useless to be creative unless you can sell what you create" - Don Draper*
 
 ## File chain
 ### Google Maps Scrape
